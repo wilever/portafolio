@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="hability">
+            <h2><span jhiTranslate="portafolioApp.hability.detail.title">Hability</span> {{hability.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="portafolioApp.hability.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'portafolioApp.HabilityType.' + hability.type}}">{{hability.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.hability.name">Name</span></dt>
+                <dd>
+                    <span>{{hability.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.hability.icon">Icon</span></dt>
+                <dd>
+                    <div *ngIf="hability.icon">
+                        <a (click)="openFile(hability.iconContentType, hability.icon)">
+                            <img [src]="'data:' + hability.iconContentType + ';base64,' + hability.icon" style="max-width: 100%;" alt="hability image"/>
+                        </a>
+                        {{hability.iconContentType}}, {{byteSize(hability.icon)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.hability.personal">Personal</span></dt>
+                <dd>
+                    <div *ngIf="hability.personal">
+                        <a [routerLink]="['/personal', hability.personal?.id, 'view']">{{hability.personal?.hability}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/hability', hability.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

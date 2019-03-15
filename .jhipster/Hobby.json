@@ -1,0 +1,35 @@
+{
+    "name": "Hobby",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "personal",
+            "otherEntityName": "personal",
+            "otherEntityField": "hobby",
+            "otherEntityRelationshipName": "hobby"
+        }
+    ],
+    "changelogDate": "20190315195500",
+    "entityTableName": "hobby",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

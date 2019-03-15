@@ -1,0 +1,25 @@
+{
+    "portafolioApp": {
+        "socialAccount": {
+            "home": {
+                "title": "Social Accounts",
+                "createLabel": "Crear nuevo Social Account",
+                "createOrEditLabel": "Crear o editar Social Account"
+            },
+            "created": "Un nuevo Social Account ha sido creado con el identificador {{ param }}",
+            "updated": "Un Social Account ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Social Account ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Social Account {{ id }}?"
+            },
+            "detail": {
+                "title": "Social Account"
+            },
+            "network": "Network",
+            "user": "User",
+            "otherNetwork": "Other Network",
+            "icon": "Icon",
+            "contact": "Contact"
+        }
+    }
+}

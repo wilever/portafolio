@@ -1,0 +1,52 @@
+{
+    "name": "Address",
+    "fields": [
+        {
+            "fieldName": "country",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "otherEntityField": "address",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "formation",
+            "otherEntityName": "formation",
+            "otherEntityField": "address",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        }
+    ],
+    "changelogDate": "20190315195456",
+    "entityTableName": "address",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

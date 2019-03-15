@@ -1,0 +1,42 @@
+{
+    "name": "Formation",
+    "fields": [
+        {
+            "fieldName": "career",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "university",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "personal",
+            "otherEntityName": "personal",
+            "otherEntityField": "formation",
+            "otherEntityRelationshipName": "formation"
+        }
+    ],
+    "changelogDate": "20190315195455",
+    "entityTableName": "formation",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

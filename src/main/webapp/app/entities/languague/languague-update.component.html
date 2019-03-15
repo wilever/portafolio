@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-languague-heading" jhiTranslate="portafolioApp.languague.home.createOrEditLabel">Create or edit a Languague</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!languague.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="languague.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.languague.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="languague.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.languague.isActive" for="field_isActive">Is Active</label>
+                    <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                        [(ngModel)]="languague.isActive" />
+                    <div [hidden]="!(editForm.controls.isActive?.dirty && editForm.controls.isActive?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.isActive?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.languague.level" for="field_level">Level</label>
+                    <select class="form-control" name="level" [(ngModel)]="languague.level" id="field_level" >
+                        <option value="WRITE">{{'portafolioApp.LanguagueLevel.WRITE' | translate}}</option>
+                        <option value="WRITE_LISTENING">{{'portafolioApp.LanguagueLevel.WRITE_LISTENING' | translate}}</option>
+                        <option value="WRITE_LISTENING_TALK">{{'portafolioApp.LanguagueLevel.WRITE_LISTENING_TALK' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.languague.personal" for="field_personal">Personal</label>
+                    <select class="form-control" id="field_personal" name="personal" [(ngModel)]="languague.personal"  required>
+                        <option *ngIf="!editForm.value.personal" [ngValue]="null" selected></option>
+                        <option [ngValue]="personalOption.id === languague.personal?.id ? languague.personal : personalOption" *ngFor="let personalOption of personals; trackBy: trackPersonalById">{{personalOption.languague}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.personal?.dirty && editForm.controls.personal?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.personal?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

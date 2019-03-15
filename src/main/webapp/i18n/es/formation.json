@@ -1,0 +1,24 @@
+{
+    "portafolioApp": {
+        "formation": {
+            "home": {
+                "title": "Formations",
+                "createLabel": "Crear nuevo Formation",
+                "createOrEditLabel": "Crear o editar Formation"
+            },
+            "created": "Un nuevo Formation ha sido creado con el identificador {{ param }}",
+            "updated": "Un Formation ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Formation ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Formation {{ id }}?"
+            },
+            "detail": {
+                "title": "Formation"
+            },
+            "career": "Career",
+            "university": "University",
+            "description": "Description",
+            "personal": "Personal"
+        }
+    }
+}

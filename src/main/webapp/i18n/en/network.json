@@ -1,0 +1,12 @@
+{
+    "portafolioApp": {
+        "Network": {
+            "null": "",
+            "GITHUB": "GITHUB",
+            "TWITTER": "TWITTER",
+            "LINKEDIN": "LINKEDIN",
+            "INSTAGRAM": "INSTAGRAM",
+            "OTHER": "OTHER"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "portafolioApp": {
+        "personal": {
+            "home": {
+                "title": "Personals",
+                "createLabel": "Crear nuevo Personal",
+                "createOrEditLabel": "Crear o editar Personal"
+            },
+            "created": "Un nuevo Personal ha sido creado con el identificador {{ param }}",
+            "updated": "Un Personal ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Personal ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Personal {{ id }}?"
+            },
+            "detail": {
+                "title": "Personal"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "profession": "Profession",
+            "image": "Image",
+            "user": "User"
+        }
+    }
+}

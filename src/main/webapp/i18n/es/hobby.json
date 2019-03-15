@@ -1,0 +1,23 @@
+{
+    "portafolioApp": {
+        "hobby": {
+            "home": {
+                "title": "Hobbies",
+                "createLabel": "Crear nuevo Hobby",
+                "createOrEditLabel": "Crear o editar Hobby"
+            },
+            "created": "Un nuevo Hobby ha sido creado con el identificador {{ param }}",
+            "updated": "Un Hobby ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Hobby ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Hobby {{ id }}?"
+            },
+            "detail": {
+                "title": "Hobby"
+            },
+            "name": "Name",
+            "icon": "Icon",
+            "personal": "Personal"
+        }
+    }
+}

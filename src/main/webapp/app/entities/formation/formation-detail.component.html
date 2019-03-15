@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="formation">
+            <h2><span jhiTranslate="portafolioApp.formation.detail.title">Formation</span> {{formation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="portafolioApp.formation.career">Career</span></dt>
+                <dd>
+                    <span>{{formation.career}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.formation.university">University</span></dt>
+                <dd>
+                    <span>{{formation.university}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.formation.description">Description</span></dt>
+                <dd>
+                    <span>{{formation.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.formation.personal">Personal</span></dt>
+                <dd>
+                    <div *ngIf="formation.personal">
+                        <a [routerLink]="['/personal', formation.personal?.id, 'view']">{{formation.personal?.formation}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/formation', formation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

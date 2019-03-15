@@ -1,0 +1,32 @@
+{
+    "name": "AboutMe",
+    "fields": [
+        {
+            "fieldName": "resume",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "personal",
+            "otherEntityName": "personal",
+            "otherEntityField": "aboutMe",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "aboutMe"
+        }
+    ],
+    "changelogDate": "20190315195454",
+    "entityTableName": "about_me",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

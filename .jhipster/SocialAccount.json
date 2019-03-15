@@ -1,0 +1,48 @@
+{
+    "name": "SocialAccount",
+    "fields": [
+        {
+            "fieldName": "network",
+            "fieldType": "Network",
+            "fieldValues": "GITHUB,TWITTER,LINKEDIN,INSTAGRAM,OTHER",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "user",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "otherNetwork",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "otherEntityField": "socialAccount",
+            "otherEntityRelationshipName": "socialAccount"
+        }
+    ],
+    "changelogDate": "20190315195453",
+    "entityTableName": "social_account",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,22 @@
+{
+    "portafolioApp": {
+        "aboutMe": {
+            "home": {
+                "title": "About Mes",
+                "createLabel": "Create a new About Me",
+                "createOrEditLabel": "Create or edit a About Me"
+            },
+            "created": "A new About Me is created with identifier {{ param }}",
+            "updated": "A About Me is updated with identifier {{ param }}",
+            "deleted": "A About Me is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete About Me {{ id }}?"
+            },
+            "detail": {
+                "title": "About Me"
+            },
+            "resume": "Resume",
+            "personal": "Personal"
+        }
+    }
+}

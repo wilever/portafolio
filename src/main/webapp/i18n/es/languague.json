@@ -1,0 +1,24 @@
+{
+    "portafolioApp": {
+        "languague": {
+            "home": {
+                "title": "Languagues",
+                "createLabel": "Crear nuevo Languague",
+                "createOrEditLabel": "Crear o editar Languague"
+            },
+            "created": "Un nuevo Languague ha sido creado con el identificador {{ param }}",
+            "updated": "Un Languague ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Languague ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Languague {{ id }}?"
+            },
+            "detail": {
+                "title": "Languague"
+            },
+            "name": "Name",
+            "isActive": "Is Active",
+            "level": "Level",
+            "personal": "Personal"
+        }
+    }
+}

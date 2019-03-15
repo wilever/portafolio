@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="hobby">
+            <h2><span jhiTranslate="portafolioApp.hobby.detail.title">Hobby</span> {{hobby.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="portafolioApp.hobby.name">Name</span></dt>
+                <dd>
+                    <span>{{hobby.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.hobby.icon">Icon</span></dt>
+                <dd>
+                    <div *ngIf="hobby.icon">
+                        <a (click)="openFile(hobby.iconContentType, hobby.icon)">
+                            <img [src]="'data:' + hobby.iconContentType + ';base64,' + hobby.icon" style="max-width: 100%;" alt="hobby image"/>
+                        </a>
+                        {{hobby.iconContentType}}, {{byteSize(hobby.icon)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.hobby.personal">Personal</span></dt>
+                <dd>
+                    <div *ngIf="hobby.personal">
+                        <a [routerLink]="['/personal', hobby.personal?.id, 'view']">{{hobby.personal?.hobby}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/hobby', hobby.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+{
+    "name": "Hability",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "HabilityType",
+            "fieldValues": "FRONTEND,BACKEND,CI_CD,QA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "personal",
+            "otherEntityName": "personal",
+            "otherEntityField": "hability",
+            "otherEntityRelationshipName": "hability"
+        }
+    ],
+    "changelogDate": "20190315195458",
+    "entityTableName": "hability",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

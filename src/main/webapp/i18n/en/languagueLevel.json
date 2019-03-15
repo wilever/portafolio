@@ -1,0 +1,10 @@
+{
+    "portafolioApp": {
+        "LanguagueLevel": {
+            "null": "",
+            "WRITE": "WRITE",
+            "WRITE_LISTENING": "WRITE_LISTENING",
+            "WRITE_LISTENING_TALK": "WRITE_LISTENING_TALK"
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="socialAccount">
+            <h2><span jhiTranslate="portafolioApp.socialAccount.detail.title">Social Account</span> {{socialAccount.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="portafolioApp.socialAccount.network">Network</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'portafolioApp.Network.' + socialAccount.network}}">{{socialAccount.network}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.socialAccount.user">User</span></dt>
+                <dd>
+                    <span>{{socialAccount.user}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.socialAccount.otherNetwork">Other Network</span></dt>
+                <dd>
+                    <span>{{socialAccount.otherNetwork}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.socialAccount.icon">Icon</span></dt>
+                <dd>
+                    <div *ngIf="socialAccount.icon">
+                        <a (click)="openFile(socialAccount.iconContentType, socialAccount.icon)">
+                            <img [src]="'data:' + socialAccount.iconContentType + ';base64,' + socialAccount.icon" style="max-width: 100%;" alt="socialAccount image"/>
+                        </a>
+                        {{socialAccount.iconContentType}}, {{byteSize(socialAccount.icon)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.socialAccount.contact">Contact</span></dt>
+                <dd>
+                    <div *ngIf="socialAccount.contact">
+                        <a [routerLink]="['/contact', socialAccount.contact?.id, 'view']">{{socialAccount.contact?.socialAccount}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/social-account', socialAccount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

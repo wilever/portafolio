@@ -1,0 +1,11 @@
+{
+    "portafolioApp": {
+        "HabilityType": {
+            "null": "",
+            "FRONTEND": "FRONTEND",
+            "BACKEND": "BACKEND",
+            "CI_CD": "CI_CD",
+            "QA": "QA"
+        }
+    }
+}

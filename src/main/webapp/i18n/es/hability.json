@@ -1,0 +1,24 @@
+{
+    "portafolioApp": {
+        "hability": {
+            "home": {
+                "title": "Habilities",
+                "createLabel": "Crear nuevo Hability",
+                "createOrEditLabel": "Crear o editar Hability"
+            },
+            "created": "Un nuevo Hability ha sido creado con el identificador {{ param }}",
+            "updated": "Un Hability ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Hability ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Hability {{ id }}?"
+            },
+            "detail": {
+                "title": "Hability"
+            },
+            "type": "Type",
+            "name": "Name",
+            "icon": "Icon",
+            "personal": "Personal"
+        }
+    }
+}

@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-hability-heading" jhiTranslate="portafolioApp.hability.home.createOrEditLabel">Create or edit a Hability</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!hability.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="hability.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.hability.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" [(ngModel)]="hability.type" id="field_type"  required>
+                        <option value="FRONTEND">{{'portafolioApp.HabilityType.FRONTEND' | translate}}</option>
+                        <option value="BACKEND">{{'portafolioApp.HabilityType.BACKEND' | translate}}</option>
+                        <option value="CI_CD">{{'portafolioApp.HabilityType.CI_CD' | translate}}</option>
+                        <option value="QA">{{'portafolioApp.HabilityType.QA' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.hability.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="hability.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.hability.icon" for="field_icon">Icon</label>
+                    <div>
+                        <img [src]="'data:' + hability.iconContentType + ';base64,' + hability.icon" style="max-height: 100px;" *ngIf="hability.icon" alt="hability image"/>
+                        <div *ngIf="hability.icon" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{hability.iconContentType}}, {{byteSize(hability.icon)}}</span>
+                            <button type="button" (click)="clearInputImage('icon', 'iconContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_icon" (change)="setFileData($event, hability, 'icon', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="icon" id="field_icon"
+                        [(ngModel)]="hability.icon" />
+                    <input type="hidden" class="form-control" name="iconContentType" id="field_iconContentType"
+                        [(ngModel)]="hability.iconContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.hability.personal" for="field_personal">Personal</label>
+                    <select class="form-control" id="field_personal" name="personal" [(ngModel)]="hability.personal"  required>
+                        <option *ngIf="!editForm.value.personal" [ngValue]="null" selected></option>
+                        <option [ngValue]="personalOption.id === hability.personal?.id ? hability.personal : personalOption" *ngFor="let personalOption of personals; trackBy: trackPersonalById">{{personalOption.hability}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.personal?.dirty && editForm.controls.personal?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.personal?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

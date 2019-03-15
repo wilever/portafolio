@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-social-account-heading" jhiTranslate="portafolioApp.socialAccount.home.createOrEditLabel">Create or edit a Social Account</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!socialAccount.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="socialAccount.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.socialAccount.network" for="field_network">Network</label>
+                    <select class="form-control" name="network" [(ngModel)]="socialAccount.network" id="field_network"  required>
+                        <option value="GITHUB">{{'portafolioApp.Network.GITHUB' | translate}}</option>
+                        <option value="TWITTER">{{'portafolioApp.Network.TWITTER' | translate}}</option>
+                        <option value="LINKEDIN">{{'portafolioApp.Network.LINKEDIN' | translate}}</option>
+                        <option value="INSTAGRAM">{{'portafolioApp.Network.INSTAGRAM' | translate}}</option>
+                        <option value="OTHER">{{'portafolioApp.Network.OTHER' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.network?.dirty && editForm.controls.network?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.network?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.socialAccount.user" for="field_user">User</label>
+                    <input type="text" class="form-control" name="user" id="field_user"
+                        [(ngModel)]="socialAccount.user" required/>
+                    <div [hidden]="!(editForm.controls.user?.dirty && editForm.controls.user?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.user?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.socialAccount.otherNetwork" for="field_otherNetwork">Other Network</label>
+                    <input type="text" class="form-control" name="otherNetwork" id="field_otherNetwork"
+                        [(ngModel)]="socialAccount.otherNetwork" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.socialAccount.icon" for="field_icon">Icon</label>
+                    <div>
+                        <img [src]="'data:' + socialAccount.iconContentType + ';base64,' + socialAccount.icon" style="max-height: 100px;" *ngIf="socialAccount.icon" alt="socialAccount image"/>
+                        <div *ngIf="socialAccount.icon" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{socialAccount.iconContentType}}, {{byteSize(socialAccount.icon)}}</span>
+                            <button type="button" (click)="clearInputImage('icon', 'iconContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_icon" (change)="setFileData($event, socialAccount, 'icon', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="icon" id="field_icon"
+                        [(ngModel)]="socialAccount.icon" />
+                    <input type="hidden" class="form-control" name="iconContentType" id="field_iconContentType"
+                        [(ngModel)]="socialAccount.iconContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="portafolioApp.socialAccount.contact" for="field_contact">Contact</label>
+                    <select class="form-control" id="field_contact" name="contact" [(ngModel)]="socialAccount.contact"  required>
+                        <option *ngIf="!editForm.value.contact" [ngValue]="null" selected></option>
+                        <option [ngValue]="contactOption.id === socialAccount.contact?.id ? socialAccount.contact : contactOption" *ngFor="let contactOption of contacts; trackBy: trackContactById">{{contactOption.socialAccount}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.contact?.dirty && editForm.controls.contact?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.contact?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

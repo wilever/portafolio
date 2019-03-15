@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="aboutMe">
+            <h2><span jhiTranslate="portafolioApp.aboutMe.detail.title">About Me</span> {{aboutMe.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="portafolioApp.aboutMe.resume">Resume</span></dt>
+                <dd>
+                    <span>{{aboutMe.resume}}</span>
+                </dd>
+                <dt><span jhiTranslate="portafolioApp.aboutMe.personal">Personal</span></dt>
+                <dd>
+                    <div *ngIf="aboutMe.personal">
+                        <a [routerLink]="['/personal', aboutMe.personal?.id, 'view']">{{aboutMe.personal?.aboutMe}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/about-me', aboutMe.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

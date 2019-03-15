@@ -1,0 +1,102 @@
+/* Entities for Professional and personal data */
+entity Personal {
+    firstName String required
+    lastName String required
+    profession String required
+    image ImageBlob required
+}
+/* Contact data, like email, phoneNumber, etc */
+entity Contact {
+	email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    phone String required
+    address String required
+}
+/* User Social media Account */
+entity SocialAccount{
+	network Network required
+    user String required
+    otherNetwork String
+    icon ImageBlob
+}
+/* Social media network available*/
+enum Network {
+    GITHUB,
+    TWITTER,
+    LINKEDIN,
+    INSTAGRAM,
+    OTHER
+}
+/* About me information*/
+entity AboutMe {
+	resume String required
+}
+/* Formation, where did you study? */
+entity Formation {
+	career String required
+    university String required
+    description String
+}
+/* Address, where are you? */
+entity Address {
+	country String required
+    city String required
+	detail String
+}
+/* Experience, where did you work? */
+entity Experience {
+	title String required
+    startDate LocalDate required
+    endDate LocalDate required
+    isActive Boolean required
+    description String required
+}
+/* Hability, which tech do you know? */
+entity Hability {
+	type HabilityType required
+    name String required
+    icon ImageBlob
+}
+/* Hability type */
+enum HabilityType {
+	FRONTEND,
+    BACKEND,
+    CI_CD,
+    QA
+}
+/* Languague, Which languague did you domain? */
+entity Languague {
+	name String required
+    isActive Boolean required
+    level LanguagueLevel
+}
+/* Languague level*/
+enum LanguagueLevel {
+	WRITE,
+    WRITE_LISTENING,
+    WRITE_LISTENING_TALK
+}
+/* Hobby, what do you do with your free time? */
+entity Hobby {
+	name String required
+    icon ImageBlob
+}
+
+relationship OneToOne {
+    Personal{user(login) required} to User
+    Contact{personal(contact) required} to Personal
+    Address{contact(address) required} to Contact
+    AboutMe{personal(aboutMe) required} to Personal
+    Address{formation(address) required} to Formation
+}
+
+relationship ManyToOne {
+	SocialAccount{contact(socialAccount) required} to Contact
+    Experience{personal(experience) required} to Personal
+	Formation{personal(formation) required} to Personal
+    Hability{personal(hability) required} to Personal
+    Languague{personal(languague) required} to Personal
+    Hobby{personal(hobby)} to Personal
+}
+
+service all with serviceImpl
+paginate all with pagination
